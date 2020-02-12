@@ -1,0 +1,5 @@
+- name: variable exmaple
+  hosts: all
+  tasks:
+   - debug: 
+       msg: Hi There {{ pkg1 }}

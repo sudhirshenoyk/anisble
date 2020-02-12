@@ -1,0 +1,13 @@
+- name: variable exmaple
+  hosts: all
+  become: yes
+  tasks:  
+  - name: remove
+    yum:
+      name: httpd
+      state: present
+    register: ssk
+
+  - name: print the register variable
+    debug:
+      var: ssk

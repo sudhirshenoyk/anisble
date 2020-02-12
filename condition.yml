@@ -1,0 +1,14 @@
+- name: using condition
+  hosts: all
+  vars:
+   var1: 123
+  become: yes
+  tasks:
+    - name: print debug
+      debug:
+       msg: Printing this wehn condition is true
+      when: var1 != 123
+
+    - name: print debug2
+      debug:
+       msg: Printing this when condition is false

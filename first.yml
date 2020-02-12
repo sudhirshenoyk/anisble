@@ -1,0 +1,7 @@
+- name: my first playbook
+  hosts: all
+  tasks:
+   - name: task1
+     command: /bin/hostname
+   - name: task2
+     command: /bin/date

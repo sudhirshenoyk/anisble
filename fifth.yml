@@ -1,0 +1,22 @@
+- name: fifth playbook to create a user, create a group and add the created user to the created group
+  hosts: all
+  become: yes
+  tasks:
+
+#   - name: create the user
+ #    user:
+  #     name: testuser
+   #    password: 'testuser'
+    #   state: present
+     #  shell: /bin/bash
+      # system: no
+       #createhome: yes
+       #home: /home/testuser
+   
+   - name: create a group
+   - group: name='test1group' state=present
+
+   - user: name=testuser1 group=test1group
+       append: yes
+      # shell: /bin/bash
+       

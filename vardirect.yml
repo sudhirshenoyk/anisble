@@ -1,0 +1,7 @@
+- name: variable exmaple
+  hosts: all
+  vars:
+   pkg1: httpd
+  tasks:
+   - debug: 
+       msg: " {{ pkg1 }}"

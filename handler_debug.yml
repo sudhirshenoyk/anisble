@@ -1,0 +1,26 @@
+- name: using handlers
+  hosts: all
+  become: yes
+  tasks:
+   - name: install the package
+     yum:
+       name: httpd
+       state: latest
+     notify:
+      - hand1
+
+   - name: print hi
+     debug:
+       msg: "In debug mode"
+     changed_when: true
+#       msg: "Handler is ture"
+#     when: handl |default(true)
+
+  handlers:
+    - name: hand1
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      #debug:   
+       #   msg: "I am in the handler"

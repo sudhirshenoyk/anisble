@@ -1,0 +1,14 @@
+- name: copy
+  hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+   - name: copy a file
+     copy:
+       src: test_file
+       dest: /tmp/sanofi-file
+
+   - name: using template
+     template:
+       src: test_file
+       dest: /tmp/mumbai-file

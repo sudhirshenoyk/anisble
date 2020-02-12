@@ -1,0 +1,32 @@
+- name: using handlers
+  hosts: all
+  become: yes
+  ignore_errors: yes # use ignore error first before using force handler
+  force_handlers: yes
+  tasks:
+   - name: install the package
+     yum:
+       name: httpd
+       state: latest
+     register: vicky
+     failed_when: vickety.changed == "false"
+
+     debug:
+      msg: "In debug"
+
+  #   notify:
+   #   - hand1
+
+ #  - name: print hi
+#     debug:
+#       msg: "In debug mode"
+#     failed_when: vickey.changed == "false"
+
+#  handlers:
+ #   - name: hand1
+  #    service:
+   #     name: httpd
+    #    state: started
+     #   enabled: yes
+      ##debug:   
+       #   msg: "I am in the handler"

@@ -1,0 +1,20 @@
+- name: using handlers
+  hosts: all
+#  become: yes
+ # ignore_errors: yes # use ignore error first before using force handler
+  tasks:
+   - block:
+      - name: task1
+        yum:
+         name: httpd1234
+         state: present
+     
+     rescue:
+       - name: task2
+         debug:
+           msg: task rescued
+
+     always:
+      - name: task3
+        debug:
+         msg: this will always execute

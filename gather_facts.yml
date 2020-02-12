@@ -1,0 +1,12 @@
+- name: system details
+  hosts: all
+  gather_facts: yes
+  tasks:
+   - debug:
+       msg: "{{ ansible_default_ipv4 }}"
+
+   - debug:
+       msg: "{{ansible_fqdn}}"
+
+   - debug:
+       msg: "{{ansible_memtotal_mb}}"

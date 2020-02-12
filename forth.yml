@@ -1,0 +1,32 @@
+- name: forth  playbook
+  hosts: all
+  become: yes
+  tasks:
+   - name: install httpd
+     yum:  
+       name: httpd
+       state: present
+  
+#  - name: ensure httpd is started
+ #   service:
+  #    name: httpd
+   #   state: started
+    #  enabled: yes
+
+   - name: start the service
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+
+   - name: create the index.html
+     copy:
+       content: "Hi Sanofi"
+       dest: /var/www/html/index.html
+   
+   - name: open port 80
+     firewalld:
+      service: http
+      state: enabled
+      permanent: yes
+      immediate: yes

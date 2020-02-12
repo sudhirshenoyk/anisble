@@ -1,0 +1,10 @@
+- name: variable exmaple
+  hosts: all
+  vars_prompt:
+  
+  - name: username
+    prompt: 'What is your name'
+    private: no
+  tasks:
+  - debug: 
+       msg:  Hi There {{ username }}
